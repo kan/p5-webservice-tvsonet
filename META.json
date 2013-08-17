@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "tiny client for http://tv.so-net.ne.jp/",
    "author" : [
       "Kan Fushihara <kan.fushihara@gmail.com>"
    ],
@@ -57,5 +57,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kan/p5-webservice-tvsonet/issues"
+      },
+      "homepage" : "https://github.com/kan/p5-webservice-tvsonet",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/kan/p5-webservice-tvsonet.git",
+         "web" : "https://github.com/kan/p5-webservice-tvsonet"
+      }
+   },
    "version" : "0.01"
 }
