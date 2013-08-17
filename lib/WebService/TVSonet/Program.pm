@@ -2,6 +2,7 @@ package WebService::TVSonet::Program;
 use Mouse;
 
 use Time::Piece;
+use Encode;
 
 has title => ( is => 'rw', isa => 'Str' );
 
@@ -23,6 +24,7 @@ has description => ( is => 'rw', isa => 'Str' );
 around BUILDARGS => sub {
     my ($orig, $class, %params) = @_;
     my $iepg = delete $params{iepg};
+    $iepg = decode('cp932', $iepg);
 
     my $body = '';
     my $body_fg = 0;

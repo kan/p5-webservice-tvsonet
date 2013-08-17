@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use utf8;
 use Test::More;
+use Encode;
 
 use WebService::TVSonet::Program;
 
@@ -21,6 +22,7 @@ subgenre: 1
 第1試合「済美」対「花巻東」　【解説】杉浦正則，【アナウンサー】星野圭介　第2試合「明徳義塾」対「大阪桐蔭」　【解説】川原崎哲也，【アナウンサー】横山哲也
 END_STR
 
+$iepg = encode('cp932', $iepg);
 my $program = WebService::TVSonet::Program->new( iepg => $iepg );
 
 is $program->title, '第95回全国高校野球選手権大会　第10日';

@@ -42,7 +42,12 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Furl" : "0",
+            "Mouse" : "0",
+            "Time::Piece" : "0",
+            "URI" : "0",
+            "XML::RSS" : "0",
+            "perl" : "5.008001"
          }
       },
       "test" : {
