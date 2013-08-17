@@ -35,15 +35,28 @@ no Mouse;
 __PACKAGE__->meta->make_immutable;
 
 sub search {
-    my ($self, $keyword) = @_;
+    my $self = shift;
+
+    my $params;
+    if (scalar(@_) == 1) {
+        if (ref($_[0]) eq 'HASH') {
+            $params = shift;
+        } else {
+            $params = { keyword => shift };
+        }
+    } else {
+        $params = { shift };
+    }
     
     my @programs;
     my $uri = $self->rss_uri->clone;
 
     $uri->query_form({
-        'stationPlatformId' => 0,
-        'condition.keyword' => $keyword,
-        'stationAreaId' => 23,
+        'stationPlatformId' => $params->{platform} // 0,
+        'condition.keyword' => $params->{keyword} // '',
+        'stationAreaId' => $params->{area} // 23,
+        'condition.genres[0].parentId' => $params->{parent_genre} // -1,
+        'condition.genres[0].childId' => $params->{child_genre} // -1,
     });
 
     my $res = $self->furl->get($uri->as_string);
