@@ -14,7 +14,7 @@ year: 2013
 month: 08
 date: 17
 start: 09:00
-end: 11:54
+end: 00:54
 program-title: 第95回全国高校野球選手権大会　第10日
 genre: 16
 subgenre: 1
@@ -31,7 +31,9 @@ is $program->genre, 16;
 is $program->subgenre, 1;
 is $program->date->strftime('%Y-%m-%d'), '2013-08-17';
 is $program->start->strftime('%Y-%m-%d %H:%M'), '2013-08-17 09:00';
-is $program->end->strftime('%Y-%m-%d %H:%M'), '2013-08-17 11:54';
+is $program->end->strftime('%Y-%m-%d %H:%M'), '2013-08-18 00:54';
+
+
 
 done_testing;
 

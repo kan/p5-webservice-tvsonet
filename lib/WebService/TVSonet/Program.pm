@@ -2,6 +2,7 @@ package WebService::TVSonet::Program;
 use Mouse;
 
 use Time::Piece;
+use Time::Seconds;
 use Encode;
 
 has title => ( is => 'rw', isa => 'Str' );
@@ -52,6 +53,10 @@ around BUILDARGS => sub {
                                            '%Y-%m-%d %H:%M');
     $params{end}   = Time::Piece->strptime(sprintf('%s-%s-%s %s', @date{qw(year month date)}, delete $params{end}),
                                            '%Y-%m-%d %H:%M');
+
+    if ($params{start} > $params{end}) {
+        $params{end} += ONE_DAY;
+    }
 
     $class->$orig(description => $body, %params);
 };
